@@ -54,6 +54,8 @@ public class SaveModal extends BottomSheetDialogFragment{
         long min = (ms - (hr*3600000)) / 60000;
         long sec =  (ms - (hr*3600000) - (min*60000)) / 1000;
         String formattedTime = hr+"h " + min+"m " + sec+"s";
+        dbHelper = new DataBaseHelper(getContext());
+        final int id = dbHelper.getLastId();
 
         //Sets
         txtDistance.setText(String.format("%.2f", distance ) + " km");
@@ -65,8 +67,8 @@ public class SaveModal extends BottomSheetDialogFragment{
             public void onClick(View view) {
                 //Set
                 String routeName = editTxtRouteName.getText().toString();
-                editTxtRouteName.setText(routeName);
-//                dbHelper.updateName(routeName, id);
+
+                dbHelper.updateName(routeName, id+1);
 
                 Intent i = new Intent(getContext() ,MainActivity.class);
                 i.putExtra("saved",true);

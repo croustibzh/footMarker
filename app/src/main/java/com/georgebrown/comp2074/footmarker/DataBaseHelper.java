@@ -85,4 +85,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
+    public int getLastId(){
+        int id;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor data = db.rawQuery("SELECT count(ID) AS counter FROM "+ TABLE_NAME ,null);
+        data.moveToNext();
+        id = data.getInt(0);
+        return id;
+    }
 }
