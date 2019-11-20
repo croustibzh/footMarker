@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:background="@color/blackFoot"
+        >
+
+        <ImageView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="224dp"
+            android:layout_weight="1"
+            android:background="@color/whiteFoot"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_streetview_black_50dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/routeDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/blackFoot"
+                android:text="Route Details"
+                android:textAlignment="center"
+                android:textColor="@color/whiteFoot"
+                android:textSize="35sp"
+                android:layout_marginLeft="95dp"
+                android:layout_marginRight="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/edTName" />
+
+            <Button
+                android:id="@+id/btnShare"
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="right"
+                android:foreground="@android:drawable/ic_menu_share" />
+        </LinearLayout>
+
+
+        <EditText
+        android:id="@+id/edTName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blackFoot"
+        android:text="Name: Route #2"
+        android:textSize="20sp"
+        android:textColor="@color/whiteFoot"
+        app:layout_constraintBottom_toTopOf="@+id/txtVDist"
+        android:paddingHorizontal="16dp"/>
+
+    <TextView
+        android:id="@+id/txtVDist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blackFoot"
+        android:textSize="20sp"
+        android:text="Distance ran: 25 KM"
+        android:textColor="@color/whiteFoot"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtVTime" />
+
+    <TextView
+        android:id="@+id/txtVTime"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@color/blackFoot"
+        android:textSize="20sp"
+        android:text="Time elapsed: 2 hours 30 minutes"
+        android:textColor="@color/whiteFoot"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBar" />
+
+        <RatingBar
+            android:id="@+id/ratingBarDetail"
+            android:layout_gravity="center"
+            android:background="@color/blackFoot"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:numStars="5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imgRoutes"
+            app:layout_constraintTop_toBottomOf="@+id/txtTag" />
+
+        <Button
+            android:id="@+id/btnSaveChanges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="290dp"
+            android:background="@color/blueFoot"
+            android:layout_marginLeft="60dp"
+            android:text="SAVE CHANGES" />
+
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

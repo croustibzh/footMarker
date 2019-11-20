@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">FootMarker</string>
+    <string name="title_activity_main"></string>
+    <string name="Start">Start</string>
+    <string name="title_activity_main_screen">MainActivityScreen</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="google_map_api_key">AIzaSyA_1FN0JID0hncDlQbiSiFs7CKh-Mpkohk</string>
+
+    <string name="title_activity_tracking_start">TrackingStart</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_full_screen_maps">Map</string>
+    <string name="about_page_text">JJMN is a group consists of students from program T127 - Computer Programmer Analyst.
+    We built Footmarker to track and record a user’s position. It acts as a map as well as a tracker to save one’s route from one place to another.
+    </string>
+    <string name="developers">Jezzica Mae Tan
+    \nJeremy Li
+    \nMorgan Ledot
+    \nNorris Co</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

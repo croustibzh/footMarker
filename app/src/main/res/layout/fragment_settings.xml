@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blueFoot">
+
+
+    <TextView
+        android:id="@+id/txtDist"
+        android:layout_width="230dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/blackFoot"
+        android:enabled="false"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Distance"
+        android:textColor="@color/whiteFoot"
+        android:textSize="30dp" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txtDist"
+        android:layout_alignBottom="@+id/txtDist"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toEndOf="@+id/txtDist"
+        android:layout_toRightOf="@+id/txtDist"
+        android:background="@color/blackFoot"
+        android:paddingHorizontal="20dp"
+        android:text="KM/MILES"
+        android:textColor="@color/whiteFoot"
+        android:textColorHighlight="@color/blackFoot"
+        android:textColorLink="@color/blueFoot"
+        android:textCursorDrawable="@color/blueFoot" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_above="@+id/txtLang"
+        android:layout_marginBottom="0dp"
+        android:background="@color/whiteFoot" />
+
+    <TextView
+        android:id="@+id/txtLang"
+        android:layout_width="230dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/txtDist"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:background="@color/blackFoot"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Language"
+        android:textColor="@color/whiteFoot"
+        android:textSize="30dp" />
+
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/switch3"
+        android:layout_alignBottom="@+id/txtLang"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toEndOf="@+id/txtDist"
+        android:layout_toRightOf="@+id/txtDist"
+        android:background="@color/blackFoot"
+        android:enabled="false"
+        android:paddingHorizontal="20dp"
+        android:text="EN/FR"
+        android:textColor="@color/whiteFoot" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/txtLang"
+        android:layout_marginBottom="0dp"
+        android:background="@color/whiteFoot" />
+
+
+</RelativeLayout>
