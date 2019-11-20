@@ -56,7 +56,7 @@ public class SaveModal extends BottomSheetDialogFragment{
         String formattedTime = hr+"h " + min+"m " + sec+"s";
 
         //Sets
-        txtDistance.setText(String.valueOf(distance) + " km");
+        txtDistance.setText(String.valueOf(distance/1000) + " km");
         txtTime.setText(formattedTime);
 
 
