@@ -107,9 +107,9 @@ public class FullScreenMapsActivity extends FragmentActivity implements OnMapRea
 
     public void saveRoutes(View view){
 
-        chronometer.stop();
+     /*   chronometer.stop();
         pauseOffset = SystemClock.elapsedRealtime() - chronometer.getBase();
-    /*    Intent i = new Intent(this,MainActivity.class);
+        Intent i = new Intent(this,MainActivity.class);
         i.putExtra("saved",true);
         startActivity(i);
     */
@@ -119,6 +119,8 @@ public class FullScreenMapsActivity extends FragmentActivity implements OnMapRea
         saveRouteImg();
 
         Bundle bundle = new Bundle();
+        timeElapsed = SystemClock.elapsedRealtime()-chronometer.getBase();
+
         bundle.putDouble("dist", distance);
         bundle.putLong("time", timeElapsed);
         SaveModal bottomSheet = new SaveModal();

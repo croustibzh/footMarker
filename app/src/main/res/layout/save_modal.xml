@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Route 1" />
+        android:text="Route" />
 
     <Button
         android:id="@+id/btnSaveRoute"
