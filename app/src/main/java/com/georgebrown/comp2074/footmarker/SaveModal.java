@@ -38,7 +38,7 @@ public class SaveModal extends BottomSheetDialogFragment{
         super.onActivityCreated(savedInstanceState);
 
         Bundle bundle = this.getArguments();
-        double distance = bundle.getDouble("dist");
+        double distance = bundle.getDouble("dist")/1000;
         long time = bundle.getLong("time");
 
         //Gets
@@ -58,7 +58,12 @@ public class SaveModal extends BottomSheetDialogFragment{
         final int id = dbHelper.getLastId();
 
         //Sets
-        txtDistance.setText(String.format("%.2f", distance ) + " km");
+        if (R.bool.distanceUnit==0) {
+            txtDistance.setText(String.format("%.2f", distance) + " km");
+        }
+        else {
+            txtDistance.setText(String.format("%.2f", distance*0.621371) + " miles");
+        }
         txtTime.setText(formattedTime);
 
 
