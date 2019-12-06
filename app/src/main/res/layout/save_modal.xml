@@ -27,13 +27,13 @@
         android:text="Run time: 52 min"
         android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/editTxtRouteName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Route" />
+  <EditText
+    android:id="@+id/editTxtRouteName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="Route"
+    android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/btnSaveRoute"

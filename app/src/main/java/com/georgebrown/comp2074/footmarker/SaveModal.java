@@ -1,6 +1,5 @@
 package com.georgebrown.comp2074.footmarker;
 
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +10,14 @@ import android.content.Intent;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import java.io.Console;
 
 public class SaveModal extends BottomSheetDialogFragment{
     private GoogleMap mMap;
@@ -56,15 +58,16 @@ public class SaveModal extends BottomSheetDialogFragment{
         String formattedTime = hr+"h " + min+"m " + sec+"s";
         dbHelper = new DataBaseHelper(getContext());
         final int id = dbHelper.getLastId();
-
         //Sets
-        if (R.bool.distanceUnit==0) {
+        if (Constants.DIST_UNIT==false) {
             txtDistance.setText(String.format("%.2f", distance) + " km");
         }
         else {
             txtDistance.setText(String.format("%.2f", distance*0.621371) + " miles");
         }
         txtTime.setText(formattedTime);
+      System.out.println(editTxtRouteName.getText().toString());
+
 
 
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +76,9 @@ public class SaveModal extends BottomSheetDialogFragment{
                 //Set
                 String routeName = editTxtRouteName.getText().toString();
 
+              if (editTxtRouteName.getText().toString() == "") {
+                editTxtRouteName.setText("Route");
+              }
                 dbHelper.updateName(routeName, id+1);
 
                 Intent i = new Intent(getContext() ,MainActivity.class);
