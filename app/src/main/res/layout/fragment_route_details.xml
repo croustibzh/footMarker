@@ -56,41 +56,80 @@
                 android:foreground="@android:drawable/ic_menu_share" />
         </LinearLayout>
 
+      <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:background="@color/blackFoot"
+          android:textSize="20sp"
+          android:paddingHorizontal="16dp"
+          android:textColor="@color/whiteFoot"
+          android:text="@string/txtName"/>
         <EditText
         android:id="@+id/edTName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blackFoot"
-        android:text="Name: Route #2"
         android:textSize="20sp"
+        android:paddingHorizontal="16dp"
         android:textColor="@color/whiteFoot"
-        app:layout_constraintBottom_toTopOf="@+id/txtVDist"
-        android:paddingHorizontal="16dp"/>
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/txtVDist"/>
+      </androidx.appcompat.widget.LinearLayoutCompat>
+      <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:background="@color/blackFoot"
+          android:textSize="20sp"
+          android:paddingHorizontal="16dp"
+          android:textColor="@color/whiteFoot"
+          android:text="@string/txtDist"/>
 
-    <TextView
+      <TextView
         android:id="@+id/txtVDist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blackFoot"
         android:textSize="20sp"
-        android:text="Distance ran: 25 KM"
+        android:text=""
         android:textColor="@color/whiteFoot"
         android:paddingHorizontal="16dp"
         app:layout_constraintBottom_toTopOf="@+id/txtVTime" />
+      </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <TextView
+      <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:background="@color/blackFoot"
+          android:textSize="20sp"
+          android:paddingHorizontal="16dp"
+          android:textColor="@color/whiteFoot"
+          android:text="@string/txtTime"/>
+      <TextView
         android:id="@+id/txtVTime"
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:background="@color/blackFoot"
         android:textSize="20sp"
-        android:text="Time elapsed: 2 hours 30 minutes"
+        android:text=""
         android:textColor="@color/whiteFoot"
         android:paddingHorizontal="16dp"
         app:layout_constraintBottom_toTopOf="@+id/ratingBar" />
+      </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <RatingBar
+      <RatingBar
             android:id="@+id/ratingBarDetail"
             android:layout_gravity="center"
             android:background="@color/blackFoot"
