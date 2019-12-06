@@ -37,8 +37,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void addRoute(String name, double distance, Long time, float rating, byte[] image,String hashTag){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        if (name=="")
-          name = "Route";
+        String defaultName = "Route";
+        if (name==""){
+          name = defaultName;}
         contentValues.put(COL1,name);
         contentValues.put(COL2,distance);
         contentValues.put(COL3,time);
