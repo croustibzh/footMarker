@@ -194,7 +194,17 @@ public class FullScreenMapsActivity extends FragmentActivity implements OnMapRea
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(updatePosition,20));
                     //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(updatePosition,20));
                     mMap.setMyLocationEnabled(true);
-                    txtDistance.setText(String.format("%.2f",distance/1000) + " km");
+                    double tempDist = distance/1000;
+
+              //Sets distance unit output
+              if (Constants.DIST_UNIT==false) {
+                txtDistance.setText(String.format("%.2f", tempDist) + " km");
+              }
+              else {
+                txtDistance.setText(String.format("%.2f", tempDist*0.621371) + " miles");
+              }
+
+//                    txtDistance.setText(String.format("%.2f",distance/1000) + " km");
 
                 }
 
