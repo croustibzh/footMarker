@@ -58,7 +58,8 @@ public class SaveModal extends BottomSheetDialogFragment{
         String formattedTime = hr+"h " + min+"m " + sec+"s";
         dbHelper = new DataBaseHelper(getContext());
         final int id = dbHelper.getLastId();
-        //Sets
+
+        //Sets distance unit output
         if (Constants.DIST_UNIT==false) {
             txtDistance.setText(String.format("%.2f", distance) + " km");
         }
@@ -66,9 +67,6 @@ public class SaveModal extends BottomSheetDialogFragment{
             txtDistance.setText(String.format("%.2f", distance*0.621371) + " miles");
         }
         txtTime.setText(formattedTime);
-      System.out.println(editTxtRouteName.getText().toString());
-
-
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
