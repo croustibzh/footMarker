@@ -93,13 +93,13 @@ public class FragmentRoutes extends Fragment {
             public boolean onQueryTextSubmit(String s) {
                 for(RouteDetails name : routesList){
                     if (name.getName().toLowerCase().contains(s.toLowerCase())){
+                        rl.clear();
                         rl.add(name);
-                        break;
                     }
                 }
 
-                adapter2 = new RoutesListAdapter(getActivity(),R.layout.custom_list, rl);
-                lstRoutes.setAdapter(adapter2);
+                adapter = new RoutesListAdapter(getActivity(),R.layout.custom_list, rl);
+                lstRoutes.setAdapter(adapter);
 
                 return true;
             }

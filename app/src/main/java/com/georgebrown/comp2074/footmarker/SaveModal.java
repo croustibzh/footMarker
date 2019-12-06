@@ -74,7 +74,7 @@ public class SaveModal extends BottomSheetDialogFragment{
                 //Set
                 String routeName = editTxtRouteName.getText().toString();
 
-                dbHelper.updateName(routeName, id-1);
+                dbHelper.updateName(routeName, dbHelper.getLastId()-1);
 
                 Intent i = new Intent(getContext() ,MainActivity.class);
                 i.putExtra("saved",true);
