@@ -37,6 +37,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.maps.android.SphericalUtil;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,17 +94,39 @@ public class FullScreenMapsActivity extends FragmentActivity implements OnMapRea
         boundry = boundryBuilder.build();
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(boundry, 100);
         mMap.stopAnimation();
-        mMap.animateCamera(cu);
-        mMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
+        mMap.animateCamera(cu, new GoogleMap.CancelableCallback(){
+
             @Override
-            public void onSnapshotReady(Bitmap bitmap) {
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
-                imageBytes = baos.toByteArray();
-                timeElapsed = SystemClock.elapsedRealtime()-chronometer.getBase();
-                dbHelper.addRoute("Route", distance, timeElapsed,0, imageBytes,"#HashTag");
+            public void onFinish() {
+                mMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
+                    @Override
+                    public void onSnapshotReady(Bitmap bitmap) {
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
+                        imageBytes = baos.toByteArray();
+                        timeElapsed = SystemClock.elapsedRealtime()-chronometer.getBase();
+                        dbHelper.addRoute("Route", distance, timeElapsed,0, imageBytes,"#HashTag");
+
+                        Bundle bundle = new Bundle();
+                        timeElapsed = SystemClock.elapsedRealtime()-chronometer.getBase();
+
+                        bundle.putDouble("dist", distance);
+                        bundle.putLong("time", timeElapsed);
+                        SaveModal bottomSheet = new SaveModal();
+                        bottomSheet.setArguments(bundle);
+
+                        bottomSheet.show(getSupportFragmentManager(), "bottomSheet");
+                    }
+
+                });
+            }
+
+            @Override
+            public void onCancel() {
+
             }
         });
+
     }
 
     public void saveRoutes(View view){
@@ -119,15 +142,7 @@ public class FullScreenMapsActivity extends FragmentActivity implements OnMapRea
         fusedLocationProviderClient.removeLocationUpdates(locationCallback);
         saveRouteImg();
 
-        Bundle bundle = new Bundle();
-        timeElapsed = SystemClock.elapsedRealtime()-chronometer.getBase();
 
-        bundle.putDouble("dist", distance);
-        bundle.putLong("time", timeElapsed);
-        SaveModal bottomSheet = new SaveModal();
-        bottomSheet.setArguments(bundle);
-
-        bottomSheet.show(getSupportFragmentManager(), "bottomSheet");
     }
 
     public void snapshot (GoogleMap.SnapshotReadyCallback callback, Bitmap bitmap){
@@ -135,6 +150,7 @@ public class FullScreenMapsActivity extends FragmentActivity implements OnMapRea
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
         imageBytes = baos.toByteArray();
     }
+
 
     /**
      * Manipulates the map once available.
@@ -175,7 +191,8 @@ public class FullScreenMapsActivity extends FragmentActivity implements OnMapRea
                         polyline.setPoints(position);
                         position.add(updatePosition);
                     }
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(updatePosition,20));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(updatePosition,20));
+                    //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(updatePosition,20));
                     mMap.setMyLocationEnabled(true);
                     txtDistance.setText(String.format("%.2f",distance/1000) + " km");
 
