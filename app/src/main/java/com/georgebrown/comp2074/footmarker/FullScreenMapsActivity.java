@@ -51,11 +51,12 @@ public class FullScreenMapsActivity extends FragmentActivity implements OnMapRea
     private double distance;
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
-    private LatLngBounds.Builder boundryBuilder = new LatLngBounds.Builder();
+    private LatLngBounds.Builder boundryBuilder;
     private byte[] imageBytes;
     private DataBaseHelper dbHelper;
     private Bitmap imgBitmap;
     private long timeElapsed;
+    private LatLngBounds boundry;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +90,7 @@ public class FullScreenMapsActivity extends FragmentActivity implements OnMapRea
     }
 
     public void saveRouteImg(){
-        LatLngBounds boundry = boundryBuilder.build();
+        boundry = boundryBuilder.build();
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(boundry, 100);
         mMap.stopAnimation();
         mMap.animateCamera(cu);
@@ -147,6 +148,7 @@ public class FullScreenMapsActivity extends FragmentActivity implements OnMapRea
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        boundryBuilder = new LatLngBounds.Builder();
         final TextView txtDistance = findViewById(R.id.txtDistance);
         final List<LatLng> position = new ArrayList<LatLng>();
         PolylineOptions polylineOptions = new PolylineOptions();

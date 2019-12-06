@@ -24,12 +24,13 @@ import androidx.fragment.app.FragmentTransaction;
 public class FragmentRoutes extends Fragment {
     RoutesListAdapter adapter, adapter2;
     ArrayList<RouteDetails> rl = new ArrayList<>();
-
+    DataBaseHelper dbHelper;
+    int id;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_routes,container,false);
-        DataBaseHelper dbHelper = new DataBaseHelper(getActivity());
+        dbHelper = new DataBaseHelper(getActivity());
 
         final ListView lstRoutes = v.findViewById(R.id.lstRoutes);
         final SearchView searchView = v.findViewById(R.id.searchView);
@@ -48,7 +49,7 @@ public class FragmentRoutes extends Fragment {
         lstRoutes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                int id = adapter.getItem(i).getId();
+                  id = adapter.getItem(i).getId();
 //                float rating = adapter.getItem(i).getRating();
 
                 Bundle bundle = new Bundle();
@@ -64,6 +65,17 @@ public class FragmentRoutes extends Fragment {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentRouteDetails);
                 fragmentTransaction.commit();
+            }
+        });
+
+        lstRoutes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                id = adapter.getItem(i).getId();
+                dbHelper.deleteItem(id);
+                adapter.setNotifyOnChange(routesList.remove(adapter.getItem(i)));
+                lstRoutes.setAdapter(adapter);
+                return true;
             }
         });
 
