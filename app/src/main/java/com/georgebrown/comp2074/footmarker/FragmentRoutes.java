@@ -91,9 +91,9 @@ public class FragmentRoutes extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
+                rl.clear();
                 for(RouteDetails name : routesList){
                     if (name.getName().toLowerCase().contains(s.toLowerCase())){
-                        rl.clear();
                         rl.add(name);
                     }
                 }
