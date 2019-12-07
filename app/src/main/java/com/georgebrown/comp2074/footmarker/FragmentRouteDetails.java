@@ -28,9 +28,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class FragmentRouteDetails extends Fragment {
 
-  private String newRouteName, newRouteTime, newRouteDistance;
+  private String newRouteName, newRouteTime, newRouteDistance, newHashTag;
   private TextView txtDistance, txtTime;
-  private EditText editTextFragment;
+  private EditText editTextFragment, hashTag;
   private Button buttonFragment, btnShare;
   private DataBaseHelper dbHelper;
   private byte[] image;
@@ -75,6 +75,7 @@ public class FragmentRouteDetails extends Fragment {
     buttonFragment = v.findViewById(R.id.btnSaveChanges); //save changes
     btnShare = v.findViewById(R.id.btnShare);
     ratingBar = v.findViewById(R.id.ratingBarDetail);
+    hashTag = v.findViewById(R.id.editTxtHashtag);
 
     //Set Map
     imageView.setImageBitmap(bitmap);
@@ -83,17 +84,19 @@ public class FragmentRouteDetails extends Fragment {
     final String currentRouteName = routeDetails.getName();
     editTextFragment.setText(currentRouteName);
     editTextFragment.requestFocus();
-//
+
 //        //Set Distance
 //        newRouteDistance = String.format("%.2f", routeDetails.getDistance() ) + " km";
 //        txtDistance.setText(newRouteDistance);
 
     //Sets distance unit output
     if (Constants.DIST_UNIT==false) {
-      txtDistance.setText(String.format("%.2f", routeDetails.getDistance()) + " km");
+      newRouteDistance = String.format("%.2f", routeDetails.getDistance()) + " km";
+      txtDistance.setText(newRouteDistance);
     }
     else {
-      txtDistance.setText(String.format("%.2f", routeDetails.getDistance()*0.621371) + " miles");
+      newRouteDistance = String.format("%.2f", routeDetails.getDistance()*0.621371) + " miles";
+      txtDistance.setText(newRouteDistance);
     }
 
     //Set Time
@@ -103,6 +106,10 @@ public class FragmentRouteDetails extends Fragment {
     long sec =  (ms - (hr*3600000) - (min*60000)) / 1000;
     newRouteTime = hr+"h " + min+"m " + sec+"s";
     txtTime.setText(newRouteTime);
+
+    //Set Hashtag
+    newHashTag = routeDetails.getHashTag();
+    hashTag.setText(newHashTag);
 
     //Set Rating
     final Float currentRating = routeDetails.getRating();
@@ -125,7 +132,11 @@ public class FragmentRouteDetails extends Fragment {
         sendIntent.setAction(Intent.ACTION_SEND);
 
         sendIntent.putExtra(Intent.EXTRA_SUBJECT, newRouteName);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "Route: " + currentRouteName + "\nDistance: " + newRouteDistance + "\nTime: " + newRouteTime);
+        sendIntent.putExtra(Intent.EXTRA_TEXT,
+                "Route: " + currentRouteName +
+                        "\nDistance: " + newRouteDistance +
+                        "\nTime: " + newRouteTime +
+                        "\nHashtag: " + newHashTag);
         sendIntent.setType("text/plain");
 
         Intent shareIntent = Intent.createChooser(sendIntent, "Share Route");
@@ -137,10 +148,15 @@ public class FragmentRouteDetails extends Fragment {
     buttonFragment.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        //Update DB + editText name
+        //Names + update db
         newRouteName = editTextFragment.getText().toString();
         dbHelper.updateName(newRouteName, id);
         editTextFragment.setText(newRouteName);
+
+        //Hashtag + update db
+        newHashTag = hashTag.getText().toString();
+        dbHelper.updateHashtag(newHashTag, id);
+        hashTag.setText(newHashTag);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.fragment_container, new FragmentRoutes());

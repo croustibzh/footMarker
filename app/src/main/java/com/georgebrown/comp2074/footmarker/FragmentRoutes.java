@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -22,7 +23,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 public class FragmentRoutes extends Fragment {
-    RoutesListAdapter adapter, adapter2;
+    RoutesListAdapter adapter;
     ArrayList<RouteDetails> rl = new ArrayList<>();
     DataBaseHelper dbHelper;
     int id;
@@ -87,20 +88,25 @@ public class FragmentRoutes extends Fragment {
             }
         });
 
-        //Search Routes (not fully functional yet)
+        //Search Routes
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 rl.clear();
-                for(RouteDetails name : routesList){
+                for(RouteDetails name: routesList){
                     if (name.getName().toLowerCase().contains(s.toLowerCase())){
                         rl.add(name);
+                    }
+                }
+                for(RouteDetails hashTag: routesList){
+                    if (hashTag.getHashTag().toLowerCase().contains(s.toLowerCase())){
+                        rl.add(hashTag);
                     }
                 }
 
                 adapter = new RoutesListAdapter(getActivity(),R.layout.custom_list, rl);
                 lstRoutes.setAdapter(adapter);
-
+                getView().clearFocus();
                 return true;
             }
 

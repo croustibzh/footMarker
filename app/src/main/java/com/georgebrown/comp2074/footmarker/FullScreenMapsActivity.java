@@ -105,7 +105,7 @@ public class FullScreenMapsActivity extends FragmentActivity implements OnMapRea
                         bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
                         imageBytes = baos.toByteArray();
                         timeElapsed = SystemClock.elapsedRealtime()-chronometer.getBase();
-                        dbHelper.addRoute("Route", distance, timeElapsed,0, imageBytes,"#HashTag");
+                        dbHelper.addRoute("Route", distance, timeElapsed,0, imageBytes,"");
 
                         Bundle bundle = new Bundle();
                         timeElapsed = SystemClock.elapsedRealtime()-chronometer.getBase();

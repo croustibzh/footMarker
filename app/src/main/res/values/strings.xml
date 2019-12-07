@@ -29,9 +29,11 @@
     \nJeremy Li
     \nMorgan Ledot
     \nNorris Co</string>
-  <string name="txtName">Route name: </string>
-  <string name="txtDist">Distance ran: </string>
-  <string name="txtTime">Time: </string>
+     <string name="txtName">Route name: </string>
+    <string name="txtDist">Distance ran: </string>
+    <string name="txtTime">Time: </string>
+    <string name="txtHashtag">Hashtag: </string>
+    <string name="txthash"># </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

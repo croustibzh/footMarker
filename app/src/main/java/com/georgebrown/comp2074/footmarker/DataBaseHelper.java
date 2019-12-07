@@ -18,7 +18,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static String COL5 = "IMAGE";
     private static String COL6 = "HASHTAG";
     public DataBaseHelper( Context context) {
-        super(context, TABLE_NAME, null,2);
+        super(context, TABLE_NAME, null,8);
     }
 
 
@@ -37,9 +37,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void addRoute(String name, double distance, Long time, float rating, byte[] image,String hashTag){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        String defaultName = "Route";
-        if (name==""){
-          name = defaultName;}
+//        String defaultName = "Route";
+//        if (name==""){
+//          name = defaultName;}
         contentValues.put(COL1,name);
         contentValues.put(COL2,distance);
         contentValues.put(COL3,time);
@@ -76,6 +76,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "UPDATE " + TABLE_NAME +
                 " SET " + COL1 + " = '" + updatedName +
+                "' WHERE " + COL0 + " = '" + id + "'" ;
+        db.execSQL(query);
+    }
+
+    public void updateHashtag(String updatedHashtag, int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME +
+                " SET " + COL6 + " = '" + updatedHashtag +
                 "' WHERE " + COL0 + " = '" + id + "'" ;
         db.execSQL(query);
     }

@@ -120,14 +120,44 @@
       <TextView
         android:id="@+id/txtVTime"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="match_parent"
         android:background="@color/blackFoot"
         android:textSize="20sp"
         android:text=""
         android:textColor="@color/whiteFoot"
-        android:paddingHorizontal="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/ratingBar" />
+        android:paddingHorizontal="16dp" />
       </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/blackFoot"
+                android:textSize="20sp"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/whiteFoot"
+                android:text="@string/txtHashtag"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/blackFoot"
+                android:textSize="20sp"
+                android:textColor="@color/whiteFoot"
+                android:text="@string/txthash"/>
+            <EditText
+                android:id="@+id/editTxtHashtag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/blackFoot"
+                android:textSize="20sp"
+                android:text=""
+                android:textColor="@color/whiteFoot"
+                android:paddingHorizontal="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/ratingBar" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
       <RatingBar
             android:id="@+id/ratingBarDetail"
